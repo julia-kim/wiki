@@ -1,0 +1,58 @@
+body {
+    margin: 0;
+    background-color: white;
+    font-family: sans-serif;
+    font-size: 0.875rem;
+}
+
+code {
+    white-space: pre;
+}
+
+h1, h2 {
+    font-family: Georgia, Times, serif;
+    margin-bottom: .5rem;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+h1 {
+    margin-top: 0px;
+    padding-top: 20px;
+    border-bottom: 1px solid #a2a9b1;
+    font-size: 1.8rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+.logo {
+    font-variant: small-caps;
+}
+
+textarea {
+    height: 90vh;
+    width: 80%;
+}
+
+.main {
+    padding: 24px;
+}
+
+.search {
+    width: 100%;
+    font-size: 15px;
+    line-height: 15px;
+}
+
+.sidebar {
+    background-color: #f6f6f6;
+    height: 100vh;
+    padding: 20px;
+    font-size: 0.75rem;
+}
+
+.sidebar h2 {
+    margin-top: 5px;
+}
