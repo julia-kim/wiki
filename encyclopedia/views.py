@@ -12,7 +12,8 @@ class NewEntryForm(forms.Form):
 
 def index(request):
     return render(request, "encyclopedia/index.html", {
-        "entries": util.list_entries()
+        "entries": util.list_entries(),
+        "total": len(util.list_entries())
     })
 
 def entry(request, title):
@@ -43,3 +44,7 @@ def rand(request):
     entries = util.list_entries()
     entry = random.choice(entries)
     return HttpResponseRedirect(reverse("encyclopedia:entry", args=(entry,)))
+
+def search(request):
+    entries = util.list_entries()
+    return render(request, "encyclopedia/search.html")
