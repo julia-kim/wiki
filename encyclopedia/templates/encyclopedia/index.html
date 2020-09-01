@@ -1,15 +1,19 @@
-{% extends "encyclopedia/layout.html" %}
+{% extends "encyclopedia/layout.html" %} 
 
-{% block title %}
-    Encyclopedia
-{% endblock %}
+{% block title %} Encyclopedia {% endblock %} 
 
 {% block body %}
+    <div class="jumbotron">
+        <p class="banner">
+            <span class="welcome">Welcome to Wiki,</span> 
+            <span>the free encyclopedia that anyone can edit.</span>
+            <span class="articlecount">{{ total }} articles in total</span>
+        </p>
+    </div>
     <h1>All Pages</h1>
-
     <ul>
         {% for entry in entries %}
-            <li><a href="/encyclopedia/{{entry}}">{{ entry }}</a></li>
+        <li><a href="/encyclopedia/{{entry}}">{{ entry }}</a></li>
         {% endfor %}
     </ul>
 {% endblock %}

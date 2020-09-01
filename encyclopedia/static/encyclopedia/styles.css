@@ -38,17 +38,24 @@ header {
   background-image: linear-gradient(to bottom, #ffffff 50%, #f6f6f6 100%);
 }
 
+.jumbotron {
+  border: 1px solid #ddd;
+  border-radius: 0;
+  background-color: #f9f9f9;
+  padding: .35rem;
+}
+
 a {
   color: #0645ad;
 }
 
-a:visited  {
+a:visited {
   color: #0b0080;
 }
 
 ul {
-    padding: 0;
-    margin-left: 1.4rem
+  padding: 0;
+  margin-left: 1.4rem;
 }
 
 textarea {
@@ -70,7 +77,7 @@ textarea {
   margin: 3rem 1rem auto auto;
   max-width: 20em;
   line-height: 15px;
-  padding: .325rem;
+  padding: 0.325rem;
 }
 
 .search-form {
@@ -90,7 +97,7 @@ textarea {
   right: 0;
 }
 
-.fa-search { 
+.fa-search {
   color: #54595d;
 }
 
@@ -108,4 +115,45 @@ textarea {
 
 form {
   display: block;
+}
+
+.editor button {
+  color: #fff;
+  background-color: #36c;
+  border: 1px solid #36c;
+  border-radius: 2px;
+  font-weight: bold;
+  padding: 5px 12px;
+}
+
+.editor button:focus {
+  box-shadow: inset 0 0 0 1px #36c, inset 0 0 0 2px #fff;
+  outline: 1px solid transparent;
+}
+
+.editor button:hover {
+  background-color: #447ff5;
+  border-color: #447ff5;
+}
+
+.editor button:active {
+  color: #fff;
+  background-color: #2a4b8d;
+  border-color: #2a4b8d;
+  box-shadow: none;
+}
+
+.banner {
+  font-size: .831rem;
+  margin-bottom: 0;
+  text-align: center;
+  width: 19.25rem;
+}
+
+.banner .welcome {
+  font-size: 1.406rem;
+}
+
+.banner span {
+  display:  block;
 }
