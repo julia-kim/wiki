@@ -10,28 +10,32 @@
         <link href="{% static 'encyclopedia/styles.css' %}" rel="stylesheet">
     </head>
     <body>
-        <div class="row">
-            <div class="sidebar col-lg-2 col-md-3">
-                <h2 class="logo">Wiki</h2>
-                <form>
-                    <input class="search" type="text" name="q" placeholder="Search Encyclopedia">
-                    <button type="submit"><i class="fa fa-search"></i></button>
-                </form>
-                <div>
-                    <a href="{% url 'encyclopedia:index' %}">Home</a>
+        <header>
+            <form class="search-form float-right">
+                <input class="search" type="text" name="q" placeholder="Search Encyclopedia">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </header>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="sidebar">
+                    <h2 class="logo">Wiki</h2>
+                    <div>
+                        <a href="{% url 'encyclopedia:index' %}">Home</a>
+                    </div>
+                    <div>
+                        <a href="{% url 'encyclopedia:create' %}">Create New Page</a>
+                    </div>
+                    <div>
+                        <a href="{% url 'encyclopedia:random' %}">Random Page</a>
+                    </div>
+                    {% block nav %}
+                    {% endblock %}
                 </div>
-                <div>
-                    <a href="{% url 'encyclopedia:create' %}">Create New Page</a>
+                <div class="main col">
+                    {% block body %}
+                    {% endblock %}
                 </div>
-                <div>
-                    <a href="{% url 'encyclopedia:random' %}">Random Page</a>
-                </div>
-                {% block nav %}
-                {% endblock %}
-            </div>
-            <div class="main col-lg-10 col-md-9">
-                {% block body %}
-                {% endblock %}
             </div>
         </div>
 

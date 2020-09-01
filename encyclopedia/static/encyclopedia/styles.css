@@ -1,58 +1,111 @@
 body {
-    margin: 0;
-    background-color: white;
-    font-family: sans-serif;
-    font-size: 0.875rem;
+  margin: 0;
+  background-color: white;
+  font-family: sans-serif;
+  font-size: 0.875rem;
 }
 
 code {
-    white-space: pre;
+  white-space: pre;
 }
 
-h1, h2 {
-    font-family: Georgia, Times, serif;
-    margin-bottom: .5rem;
-    font-weight: 500;
-    line-height: 1.2;
+h1,
+h2 {
+  font-family: Georgia, Times, serif;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  line-height: 1.2;
 }
 
 h1 {
-    margin-top: 0px;
-    padding-top: 20px;
-    border-bottom: 1px solid #a2a9b1;
-    font-size: 1.8rem;
+  margin-top: 0px;
+  padding-top: 0px;
+  border-bottom: 1px solid #a2a9b1;
+  font-size: 1.8rem;
 }
 
 h2 {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
 .logo {
-    font-variant: small-caps;
+  font-variant: small-caps;
+}
+
+header {
+  height: 5rem;
+  background-color: #fbfbfb;
+  background-image: linear-gradient(to bottom, #ffffff 50%, #f6f6f6 100%);
+}
+
+a {
+  color: #0645ad;
+}
+
+a:visited  {
+  color: #0b0080;
+}
+
+ul {
+    padding: 0;
+    margin-left: 1.4rem
 }
 
 textarea {
-    height: 90vh;
-    width: 80%;
+  height: 90vh;
+  width: 80%;
 }
 
 .main {
-    padding: 24px;
+  border: 1px solid #a7d7f9;
+  border-right: hidden;
+  padding: 1.25em 1.5em 1.5em 1.5em;
 }
 
 .search {
-    width: 100%;
-    font-size: 15px;
-    line-height: 15px;
+  border-radius: 2px;
+  border: 1px solid #a2a9b1;
+  min-width: 5em;
+  width: 20vw;
+  margin: 3rem 1rem auto auto;
+  max-width: 20em;
+  line-height: 15px;
+  padding: .325rem;
+}
+
+.search-form {
+  position: relative;
+  font-size: 0.8125rem;
+}
+
+.search-form button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  margin: 3rem 1rem 0 0;
+  padding-top: 0.1625rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.fa-search { 
+  color: #54595d;
 }
 
 .sidebar {
-    background-color: #f6f6f6;
-    height: 100vh;
-    padding: 20px;
-    font-size: 0.75rem;
+  background-color: #f6f6f6;
+  height: 100vh;
+  padding: 16px 20px;
+  font-size: 0.75rem;
+  width: 11.25rem;
 }
 
 .sidebar h2 {
-    margin-top: 5px;
+  margin-top: 5px;
+}
+
+form {
+  display: block;
 }
