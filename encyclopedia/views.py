@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from markdown2 import Markdown
 from . import util
+import random
 
 class NewEntryForm(forms.Form):
     title = forms.CharField(label="Enter title")
@@ -37,3 +38,8 @@ def create(request):
     return render(request, "encyclopedia/create.html", {
         "form": NewEntryForm()
     })
+
+def rand(request):
+    entries = util.list_entries()
+    entry = random.choice(entries)
+    return HttpResponseRedirect(reverse("encyclopedia:entry", args=(entry,)))
