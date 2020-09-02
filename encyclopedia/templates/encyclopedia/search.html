@@ -1,18 +1,20 @@
 {% extends "encyclopedia/layout.html" %}
  
-{% block title %} Search {% endblock %}
+{% block title %} {% if isValidQuery %} {{ query }} - Search results {% else %} Search {% endif %}{% endblock %}
 
 {% block body %}
+  {% if not isValidQuery %}
   <h1>Search</h1>
   {{ form }}
   <button class="btn" type="submit">Submit</button>
+  {% else %}
+  <h1>Search results</h1> 
   <ul class="search-results">
     {% for result in results %}
     <li><a href="{% url 'encyclopedia:entry' result %}">{{ result }}</a></li>
     {% empty %}
     <li class="err"><em>The page "{{ query }}" does not exist. How about creating one yourself?</em></li>
-    <li class="err">There were no results matching the query.</li>
-    </div>
     {% endfor %}
   </ul>
+  {% endif %}
 {% endblock %}
