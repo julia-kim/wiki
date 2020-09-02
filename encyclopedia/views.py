@@ -10,6 +10,9 @@ class NewEntryForm(forms.Form):
     title = forms.CharField(label="Enter title")
     content = forms.CharField(widget=forms.Textarea)
 
+class SearchForm(forms.Form): 
+    q = forms.CharField(label='', widget=forms.TextInput(attrs={'class': 'advanced-search'}))
+
 def index(request):
     return render(request, "encyclopedia/index.html", {
         "entries": util.list_entries(),
@@ -46,5 +49,16 @@ def rand(request):
     return HttpResponseRedirect(reverse("encyclopedia:entry", args=(entry,)))
 
 def search(request):
+    query = request.GET['q']
     entries = util.list_entries()
-    return render(request, "encyclopedia/search.html")
+    results = []
+    for entry in entries:
+        if query.lower() == entry.lower():
+            return HttpResponseRedirect(reverse("encyclopedia:entry", args=(entry,)))
+        if query.lower() in entry.lower():
+            results.append(entry)
+    return render(request, "encyclopedia/search.html", {
+        "form": SearchForm(),
+        "query": query,
+        "results": results
+    })

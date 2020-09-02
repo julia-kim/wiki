@@ -4,5 +4,15 @@
 
 {% block body %}
   <h1>Search</h1>
-
+  {% csrf_token %}
+  {{ form }}
+  <ul class="search-results">
+    {% for result in results %}
+    <li><a href="{% url 'encyclopedia:entry' result %}">{{ result }}</a></li>
+    {% empty %}
+    <li class="err"><em>The page "{{ query }}" does not exist. How about creating one yourself?</em></li>
+    <li class="err">There were no results matching the query.</li>
+    </div>
+    {% endfor %}
+  </ul>
 {% endblock %}
