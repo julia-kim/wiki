@@ -1,3 +1,5 @@
+$serif: Georgia, Times, serif;
+
 body {
   background-color: white;
   font-family: sans-serif;
@@ -9,14 +11,15 @@ code {
   white-space: pre;
 }
 
-h2, h1 {
-  font-family: Georgia, Times, serif;
+%heading {
+  font-family: $serif;
   font-weight: 500;
   line-height: 1.2;
   margin-bottom: 0.5rem;
 }
 
 h1 {
+  @extend %heading;
   border-bottom: 1px solid #a2a9b1;
   font-size: 1.8rem;
   margin-top: 0px;
@@ -24,6 +27,7 @@ h1 {
 }
 
 h2 {
+  @extend %heading;
   font-size: 1.5rem;
 }
 
@@ -46,9 +50,10 @@ header {
 
 a {
   color: #0645ad;
-}
-a:visited {
-  color: #0b0080;
+
+  &:visited {
+    color: #0b0080;
+  }
 }
 
 ul {
@@ -81,17 +86,18 @@ textarea {
 .search-form {
   font-size: 0.8125rem;
   position: relative;
-}
-.search-form button {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  display: inline-block;
-  margin: 3rem 1rem 0 0;
-  padding-top: 0.1625rem;
-  position: absolute;
-  right: 0;
-  top: 0;
+
+  button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    margin: 3rem 1rem 0 0;
+    padding-top: 0.1625rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
 }
 
 .fa-search {
@@ -104,16 +110,17 @@ textarea {
   height: 100vh;
   padding: 16px 20px;
   width: 11.25rem;
-}
-.sidebar h2 {
-  margin-top: 5px;
+
+  h2 {
+    margin-top: 5px;
+  }
 }
 
 form {
   display: block;
 }
 
-.btn, .btn:focus, .btn:active, .btn:hover {
+.btn, %btn {
   background-color: #36c;
   border: 1px solid #36c;
   border-radius: 2px;
@@ -121,20 +128,26 @@ form {
   font-size: 0.875rem;
   font-weight: 700;
   padding: 5px 12px;
-}
-.btn:hover {
-  background-color: #447ff5;
-  border-color: #447ff5;
-}
-.btn:active {
-  background-color: #2a4b8d;
-  border-color: #2a4b8d;
-  box-shadow: none;
-  color: #fff;
-}
-.btn:focus {
-  box-shadow: inset 0 0 0 1px #36c, inset 0 0 0 2px #fff;
-  outline: 1px solid transparent;
+
+  &:hover {
+    @extend %btn;
+    background-color: #447ff5;
+    border-color: #447ff5;
+  }
+
+  &:active {
+    @extend %btn;
+    background-color: #2a4b8d;
+    border-color: #2a4b8d;
+    box-shadow: none;
+    color: #fff;
+  }
+
+  &:focus {
+    @extend %btn;
+    box-shadow: inset 0 0 0 1px #36c, inset 0 0 0 2px #fff;
+    outline: 1px solid transparent;
+  }
 }
 
 .banner {
@@ -142,12 +155,14 @@ form {
   margin-bottom: 0;
   text-align: center;
   width: 19.25rem;
-}
-.banner .welcome {
-  font-size: 1.406rem;
-}
-.banner span {
-  display: block;
+
+  .welcome {
+    font-size: 1.406rem;
+  }
+
+  span {
+    display: block;
+  }
 }
 
 .search-results {
@@ -158,5 +173,3 @@ form {
   list-style: none;
   margin: 0.438em 0.438em 0.438em 0;
 }
-
-/*# sourceMappingURL=styles.css.map */
