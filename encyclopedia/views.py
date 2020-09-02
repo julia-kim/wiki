@@ -27,8 +27,8 @@ def index(request):
 
 
 def entry(request, title):
-    md = Markdown().convert(util.get_entry(title))
     if util.get_entry(title):
+        md = Markdown().convert(util.get_entry(title))
         return render(
             request, "encyclopedia/entry.html", {"title": title, "content": md}
         )
@@ -72,4 +72,3 @@ def search(request):
         "encyclopedia/search.html",
         {"form": SearchForm(), "query": query, "results": results, "isValidQuery": isValidQuery},
     )
-
