@@ -8,13 +8,30 @@ import random
 
 
 class NewEntryForm(forms.Form):
-    title = forms.CharField(label="Enter title")
-    content = forms.CharField(widget=forms.Textarea)
-
+    title = forms.CharField(
+        label="",
+        widget=forms.TextInput(
+            attrs={
+                "class": "titleinput",
+                "autocomplete": "off",
+                "placeholder": "Title goes here",
+            }
+        ),
+    )
+    content = forms.CharField(
+        label="",
+        widget=forms.Textarea(
+            attrs={
+                "class": "textarea",
+                "placeholder": "Enter the content of your article here.",
+            }
+        ),
+    )
 
 class SearchForm(forms.Form):
     q = forms.CharField(
-        label="", widget=forms.TextInput(attrs={"class": "advanced-search"})
+        label="",
+        widget=forms.TextInput(attrs={"class": "searchbar", "autocomplete": "off"}),
     )
 
 
@@ -64,11 +81,18 @@ def search(request):
         if query and (not query.isspace()):
             isValidQuery = True
             if query.lower() == entry.lower():
-                return HttpResponseRedirect(reverse("encyclopedia:entry", args=(entry,)))
+                return HttpResponseRedirect(
+                    reverse("encyclopedia:entry", args=(entry,))
+                )
             elif query.lower() in entry.lower():
                 results.append(entry)
     return render(
         request,
         "encyclopedia/search.html",
-        {"form": SearchForm(), "query": query, "results": results, "isValidQuery": isValidQuery},
+        {
+            "form": SearchForm(),
+            "query": query,
+            "results": results,
+            "isValidQuery": isValidQuery,
+        },
     )

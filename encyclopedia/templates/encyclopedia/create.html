@@ -3,10 +3,16 @@
 {% block title %} Create New Page {% endblock %}
 
 {% block body %}
-  <h1>Create New Page</h1>
-    <form action="{% url 'encyclopedia:create' %}" method="post">
-      {% csrf_token %}
-      {{ form }}
-      <button class="btn" type="submit">Publish changes</button>
-    </form>
+  <h1>Create new page</h1>
+  <h3>Instructions</h3>
+  <ol>
+    <li>Enter the content of your article in the blank area below. You may use <a href="https://help.github.com/en/github/writing-on-github/basic-writing-and-formatting-syntax">Markdown</a> syntax to properly format your article.</li>
+    <li>Please do <strong>not</strong> plagiarize. Do <strong>not</strong> copy and paste content from another website.</li>
+    <li>When you are finished writing, click the "Publish page" button. You are all done! Your submission is appreciated.</li>
+  </ol>
+  <form action="{% url 'encyclopedia:create' %}" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button class="btn" type="submit">Publish changes</button>
+  </form>
 {% endblock %}

@@ -1,7 +1,10 @@
 $serif: Georgia, Times, serif;
+$grey: #a2a9b1;
+$white: #fff;
 
 body {
-  background-color: white;
+  background-color: $white;
+  color: #000;
   font-family: sans-serif;
   font-size: 0.875rem;
   margin: 0;
@@ -18,17 +21,24 @@ code {
   margin-bottom: 0.5rem;
 }
 
-h1 {
+h1, %h1 {
   @extend %heading;
-  border-bottom: 1px solid #a2a9b1;
+  border-bottom: 1px solid $grey;
   font-size: 1.8rem;
-  margin-top: 0px;
-  padding-top: 0px;
+  margin-top: 0;
+  padding-top: 0;
 }
 
 h2 {
   @extend %heading;
   font-size: 1.5rem;
+}
+
+h3 {
+  @extend %heading;
+  border-bottom: 1px solid $grey;
+  font-size: 1.313rem;
+  margin-top: 1.313rem;
 }
 
 .logo {
@@ -37,7 +47,7 @@ h2 {
 
 header {
   background-color: #fbfbfb;
-  background-image: linear-gradient(to bottom, #ffffff 50%, #f6f6f6 100%);
+  background-image: linear-gradient(to bottom, $white 50%, #f6f6f6 100%);
   height: 5rem;
 }
 
@@ -61,9 +71,34 @@ ul {
   padding: 0;
 }
 
-textarea {
+.search-results {
+  margin: 0;
+
+  li {
+    list-style: none;
+    margin: 0.438em 0.438em 0.438em 0;
+  }
+  
+}
+
+%border {
+  border: 1px solid $grey;
+  border-radius: 2px;
+}
+
+.titleinput {
+  @extend %h1;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  width: 100%;
+}
+
+.textarea {
+  @extend %border;
+  font-family: monospace;
   height: 90vh;
-  width: 80%;
+  width: 100%;
 }
 
 .main {
@@ -73,8 +108,7 @@ textarea {
 }
 
 .search {
-  border: 1px solid #a2a9b1;
-  border-radius: 2px;
+  @extend %border;
   line-height: 15px;
   margin: 3rem 1rem auto auto;
   max-width: 20em;
@@ -83,7 +117,15 @@ textarea {
   width: 20vw;
 }
 
-.search-form {
+.searchbar {
+  @extend %border;
+  margin-right: hidden;
+  min-height: 1.25rem;
+  padding: 0.313rem 0.5rem;
+  width: 36.375rem;
+}
+
+.searchform {
   font-size: 0.8125rem;
   position: relative;
 
@@ -101,7 +143,7 @@ textarea {
 }
 
 .fa-search {
-  color: #54595d;
+  color: #545454;
 }
 
 .sidebar {
@@ -120,11 +162,12 @@ form {
   display: block;
 }
 
-.btn, %btn {
+.btn,
+%btn {
   background-color: #36c;
   border: 1px solid #36c;
   border-radius: 2px;
-  color: #fff;
+  color: $white;
   font-size: 0.875rem;
   font-weight: 700;
   padding: 5px 12px;
@@ -140,12 +183,12 @@ form {
     background-color: #2a4b8d;
     border-color: #2a4b8d;
     box-shadow: none;
-    color: #fff;
+    color: $white;
   }
 
   &:focus {
     @extend %btn;
-    box-shadow: inset 0 0 0 1px #36c, inset 0 0 0 2px #fff;
+    box-shadow: inset 0 0 0 1px #36c, inset 0 0 0 2px $white;
     outline: 1px solid transparent;
   }
 }
@@ -163,13 +206,4 @@ form {
   span {
     display: block;
   }
-}
-
-.search-results {
-  margin: 0;
-}
-
-.err {
-  list-style: none;
-  margin: 0.438em 0.438em 0.438em 0;
 }
