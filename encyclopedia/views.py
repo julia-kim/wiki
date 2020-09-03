@@ -28,6 +28,15 @@ class NewEntryForm(forms.Form):
         ),
     )
 
+
+class EditEntryForm(forms.Form):
+    content = forms.CharField(
+        initial="markdown",
+        label="",
+        widget=forms.Textarea(attrs={"class": "textarea"}),
+    )
+
+
 class SearchForm(forms.Form):
     q = forms.CharField(
         label="",
@@ -63,7 +72,23 @@ def create(request):
             util.save_entry(title, content)
             return HttpResponseRedirect(reverse("encyclopedia:index"))
 
+        # There is already an article named {}.
+
     return render(request, "encyclopedia/create.html", {"form": NewEntryForm()})
+
+
+def edit(request, title):
+    if util.get_entry(title):
+        content = util.get_entry(title)
+        form = EditEntryForm(initial={"content": content})
+
+        return render(
+            request,
+            "encyclopedia/edit.html",
+            {"title": title, "form": form},
+        )
+    else:
+        return render(request, "encyclopedia/error.html")
 
 
 def rand(request):
