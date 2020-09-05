@@ -2,11 +2,20 @@ $serif: Georgia, Times, serif;
 $grey: #a2a9b1;
 $white: #fff;
 
+@mixin button-reset {
+  background-color: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  padding: 0;
+}
+
 body {
-  background-color: $white;
+  background-color: #f6f6f6;
   color: #000;
   font-family: sans-serif;
-  font-size: 0.875rem;
+  font-size: 16px;
   margin: 0;
 }
 
@@ -14,6 +23,12 @@ code {
   white-space: pre;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
 %heading {
   font-family: $serif;
   font-weight: 500;
@@ -21,8 +36,7 @@ code {
   margin-bottom: 0.5rem;
 }
 
-h1, %h1 {
-  @extend %heading;
+h1 {
   border-bottom: 1px solid $grey;
   font-size: 1.8rem;
   margin-top: 0;
@@ -30,19 +44,17 @@ h1, %h1 {
 }
 
 h2 {
-  @extend %heading;
-  font-size: 1.5rem;
-}
-
-h3 {
-  @extend %heading;
   border-bottom: 1px solid $grey;
   font-size: 1.313rem;
   margin-top: 1.313rem;
 }
 
 .logo {
+  @extend %heading;
+  font-size: 1.5rem;
   font-variant: small-caps;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
 header {
@@ -78,7 +90,6 @@ ul {
     list-style: none;
     margin: 0.438em 0.438em 0.438em 0;
   }
-  
 }
 
 %border {
@@ -87,7 +98,7 @@ ul {
 }
 
 .titleinput {
-  @extend %h1;
+  @extend h1;
   border-left: none;
   border-right: none;
   border-top: none;
@@ -97,13 +108,17 @@ ul {
 .textarea {
   @extend %border;
   font-family: monospace;
+  font-size: 0.813rem;
   height: 90vh;
+  margin: 0.5rem auto 0.875rem;
   width: 100%;
 }
 
 .main {
+  background-color: $white;
   border: 1px solid #a7d7f9;
   border-right: hidden;
+  font-size: 0.875rem;
   padding: 1.25em 1.5em 1.5em 1.5em;
 }
 
@@ -119,10 +134,19 @@ ul {
 
 .searchbar {
   @extend %border;
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
   margin-right: hidden;
-  min-height: 1.25rem;
+  min-height: 2.25rem;
   padding: 0.313rem 0.5rem;
   width: 36.375rem;
+
+  + .btn,
+  + .btn:hover,
+  + .btn:active,
+  + .btn:focus {
+    border-radius: 0 2px 2px 0;
+  }
 }
 
 .searchform {
@@ -130,12 +154,9 @@ ul {
   position: relative;
 
   button {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    display: inline-block;
+    @include button-reset;
     margin: 3rem 1rem 0 0;
-    padding-top: 0.1625rem;
+    padding: 0.1625rem 0.5rem;
     position: absolute;
     right: 0;
     top: 0;
@@ -170,8 +191,9 @@ form {
   color: $white;
   font-size: 0.875rem;
   font-weight: 700;
-  min-height: 2rem;
+  min-height: 2.25rem;
   padding: 5px 12px;
+  vertical-align: top;
 
   &:hover {
     @extend %btn;
@@ -195,13 +217,11 @@ form {
 }
 
 .cancel {
-  background-color: transparent;
-  border: none;
-  border-radius: 2px;
+  @include button-reset;
   color: #d33;
   font-size: 0.875rem;
   font-weight: 700;
-  min-height: 2rem;
+  min-height: 2.25rem;
   padding: 5px 12px;
 
   a {
@@ -234,5 +254,16 @@ form {
 
   span {
     display: block;
+  }
+}
+
+.errorlist {
+  color: red;
+  font-weight: 700;
+  list-style: none;
+  margin-left: 0;
+
+  li::before {
+    content: "Error: ";
   }
 }

@@ -1,8 +1,8 @@
 body {
-  background-color: #fff;
+  background-color: #f6f6f6;
   color: #000;
   font-family: sans-serif;
-  font-size: 0.875rem;
+  font-size: 16px;
   margin: 0;
 }
 
@@ -10,7 +10,13 @@ code {
   white-space: pre;
 }
 
-h3, h2, h1, .titleinput {
+h1, .titleinput,
+h2,
+h3,
+h4,
+h5,
+h6,
+.logo {
   font-family: Georgia, Times, serif;
   font-weight: 500;
   line-height: 1.2;
@@ -25,17 +31,16 @@ h1, .titleinput {
 }
 
 h2 {
-  font-size: 1.5rem;
-}
-
-h3 {
   border-bottom: 1px solid #a2a9b1;
   font-size: 1.313rem;
   margin-top: 1.313rem;
 }
 
 .logo {
+  font-size: 1.5rem;
   font-variant: small-caps;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
 header {
@@ -85,13 +90,17 @@ ul {
 
 .textarea {
   font-family: monospace;
+  font-size: 0.813rem;
   height: 90vh;
+  margin: 0.5rem auto 0.875rem;
   width: 100%;
 }
 
 .main {
+  background-color: #fff;
   border: 1px solid #a7d7f9;
   border-right: hidden;
+  font-size: 0.875rem;
   padding: 1.25em 1.5em 1.5em 1.5em;
 }
 
@@ -105,10 +114,18 @@ ul {
 }
 
 .searchbar {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
   margin-right: hidden;
-  min-height: 1.25rem;
+  min-height: 2.25rem;
   padding: 0.313rem 0.5rem;
   width: 36.375rem;
+}
+.searchbar + .btn,
+.searchbar + .btn:hover,
+.searchbar + .btn:active,
+.searchbar + .btn:focus {
+  border-radius: 0 2px 2px 0;
 }
 
 .searchform {
@@ -116,12 +133,14 @@ ul {
   position: relative;
 }
 .searchform button {
-  background: transparent;
+  background-color: transparent;
   border: none;
+  color: inherit;
   cursor: pointer;
-  display: inline-block;
+  font: inherit;
+  padding: 0;
   margin: 3rem 1rem 0 0;
-  padding-top: 0.1625rem;
+  padding: 0.1625rem 0.5rem;
   position: absolute;
   right: 0;
   top: 0;
@@ -156,8 +175,9 @@ form {
   color: #fff;
   font-size: 0.875rem;
   font-weight: 700;
-  min-height: 2rem;
+  min-height: 2.25rem;
   padding: 5px 12px;
+  vertical-align: top;
 }
 .btn:hover {
   background-color: #447ff5;
@@ -177,11 +197,14 @@ form {
 .cancel {
   background-color: transparent;
   border: none;
-  border-radius: 2px;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  padding: 0;
   color: #d33;
   font-size: 0.875rem;
   font-weight: 700;
-  min-height: 2rem;
+  min-height: 2.25rem;
   padding: 5px 12px;
 }
 .cancel a {
@@ -209,6 +232,16 @@ form {
 }
 .banner span {
   display: block;
+}
+
+.errorlist {
+  color: red;
+  font-weight: 700;
+  list-style: none;
+  margin-left: 0;
+}
+.errorlist li::before {
+  content: "Error: ";
 }
 
 /*# sourceMappingURL=styles.css.map */

@@ -2,6 +2,7 @@ from django import forms
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.utils.html import format_html
 from markdown2 import Markdown
 from . import util
 import random
@@ -27,6 +28,17 @@ class NewEntryForm(forms.Form):
             }
         ),
     )
+
+    def clean_title(self):
+        title = self.cleaned_data.get('title').capitalize()
+        if util.get_entry(title):
+            entries = util.list_entries()
+            for entry in entries:
+                if title.lower() == entry.lower():
+                    title = entry
+            msg = format_html(f"<em>There is already an article named <a href='{title}'>{title}</a></em>.", reverse("encyclopedia:entry", args=(title,)))
+            self.add_error('title', msg)
+        return title
 
 
 class EditEntryForm(forms.Form):
@@ -55,6 +67,10 @@ def index(request):
 def entry(request, title):
     if util.get_entry(title):
         md = Markdown().convert(util.get_entry(title))
+        entries = util.list_entries()
+        for entry in entries:
+            if title.lower() == entry.lower():
+                title = entry
         return render(
             request, "encyclopedia/entry.html", {"title": title, "content": md}
         )
@@ -65,28 +81,36 @@ def entry(request, title):
 def create(request):
     if request.method == "POST":
         form = NewEntryForm(request.POST)
-
         if form.is_valid():
             title = form.cleaned_data["title"]
-            content = form.cleaned_data["content"]
+            content = f"#{title}" + "\n\n" + form.cleaned_data["content"]
             util.save_entry(title, content)
-            return HttpResponseRedirect(reverse("encyclopedia:index"))
-
-        # There is already an article named {}.
-
-    return render(request, "encyclopedia/create.html", {"form": NewEntryForm()})
+            return HttpResponseRedirect(reverse("encyclopedia:entry", args=(title,)))
+    
+    else: 
+        form = NewEntryForm()
+    
+    return render(request, "encyclopedia/create.html", {"form": form})
 
 
 def edit(request, title):
+    if request.method == "POST":
+        form = EditEntryForm(request.POST)
+
+        if form.is_valid():
+            content = form.cleaned_data["content"]
+            util.save_entry(title, content)
+            return HttpResponseRedirect(reverse("encyclopedia:entry", args=(title,)))
+
     if util.get_entry(title):
         content = util.get_entry(title)
         form = EditEntryForm(initial={"content": content})
-
         return render(
             request,
             "encyclopedia/edit.html",
             {"title": title, "form": form},
         )
+
     else:
         return render(request, "encyclopedia/error.html")
 
