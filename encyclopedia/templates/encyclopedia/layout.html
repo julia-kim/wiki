@@ -12,7 +12,6 @@
     <body>
         <header>
             <form class="searchform float-right" action="{% url 'encyclopedia:search' %}" method="get" autocomplete="off">
-                {% csrf_token %}
                 <input class="search" type="text" name="q" placeholder="Search Encyclopedia">
                 <button type="submit"><i class="fa fa-search"></i></button>
             </form>
