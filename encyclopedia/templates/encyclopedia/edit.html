@@ -4,10 +4,10 @@
 
 {% block body %}
   <h1>Editing {{ title }} </h1>
-  <form action="{% url 'encyclopedia:edit' title %}" method="post">
+  <form action="{% url 'wiki:edit' title %}" method="post">
     {% csrf_token %}
     {{ form }}
     <button class="btn" type="submit">Publish changes</button>
-    <button class="cancel" type="button"><a href="{% url 'encyclopedia:entry' title %}">Cancel</a></button>
+    <button class="cancel" type="button"><a href="{% url 'wiki:entry' title %}">Cancel</a></button>
   </form>
 {% endblock %}

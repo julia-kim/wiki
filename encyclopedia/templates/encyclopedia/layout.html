@@ -11,7 +11,7 @@
     </head>
     <body>
         <header>
-            <form class="searchform float-right" action="{% url 'encyclopedia:search' %}" method="get" autocomplete="off">
+            <form class="searchform float-right" action="{% url 'wiki:search' %}" method="get" autocomplete="off">
                 <input class="search" type="text" name="q" placeholder="Search Encyclopedia">
                 <button type="submit"><i class="fa fa-search"></i></button>
             </form>
@@ -21,13 +21,13 @@
                 <div class="sidebar">
                     <p class="logo">Wiki</p>
                     <div>
-                        <a href="{% url 'encyclopedia:index' %}">Home</a>
+                        <a href="{% url 'wiki:index' %}">Home</a>
                     </div>
                     <div>
-                        <a href="{% url 'encyclopedia:create' %}">Create New Page</a>
+                        <a href="{% url 'wiki:create' %}">Create New Page</a>
                     </div>
                     <div>
-                        <a href="{% url 'encyclopedia:random' %}">Random Page</a>
+                        <a href="{% url 'wiki:random' %}">Random Page</a>
                     </div>
                     {% block nav %}
                     {% endblock %}

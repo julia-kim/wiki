@@ -10,10 +10,10 @@
     <li>Please do <strong>not</strong> plagiarize. Do <strong>not</strong> copy and paste content from another website.</li>
     <li>When you are finished writing, click the "Publish page" button. You are all done! Your submission is appreciated.</li>
   </ol>
-  <form action="{% url 'encyclopedia:create' %}" method="post">
+  <form action="{% url 'wiki:create' %}" method="post" autocomplete="off">
     {% csrf_token %}
     {{ form }}
     <button class="btn" type="submit">Publish page</button>
-    <button class="cancel" type="button"><a href="{% url 'encyclopedia:index' %}">Cancel</a></button>
+    <button class="cancel" type="button"><a href="{% url 'wiki:index' %}">Cancel</a></button>
   </form>
 {% endblock %}
