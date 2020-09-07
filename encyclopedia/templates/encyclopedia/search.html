@@ -1,6 +1,6 @@
 {% extends "encyclopedia/layout.html" %}
  
-{% block title %} {% if isValidQuery %} {{ query }} - Search results {% else %} Search {% endif %}{% endblock %}
+{% block title %} {% if isValidQuery %} {{ query }} - Search results {% else %} Search {% endif %} {% endblock %}
 
 {% block body %}
   {% if not isValidQuery %}
@@ -9,17 +9,22 @@
     {{ form }}<button class="btn" name="search" type="submit">Submit</button>
   </form>
   {% else %}
-  <h1>Search results</h1> 
+  <h1>Search results</h1>
   <form action="{% url 'wiki:search' %}" method="get" autocomplete="off">
     {{ form }}<button class="btn" name="search" type="submit">Submit</button>
   </form>
   <ul class="search-results">
-    <li><em>The page "{{ query }}" does not exist. How about creating one yourself?</em></li>
+    <li>
+      <em
+        >The page "{{ query }}" does not exist. How about creating one
+        yourself?</em
+      >
+    </li>
     {% for result in results %}
     <li><a href="{% url 'wiki:entry' result %}">{{ result }}</a></li>
     {% empty %}
     <li class="err">No results found for {{ query }}.</li>
     {% endfor %}
   </ul>
-  {% endif %}
+  {% endif %} 
 {% endblock %}
