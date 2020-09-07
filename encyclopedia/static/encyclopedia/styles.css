@@ -69,6 +69,8 @@ ul {
 }
 
 .search-results {
+  display: flex;
+  flex-direction: column;
   margin: 0;
 }
 .search-results li {
@@ -140,7 +142,7 @@ ul {
   font: inherit;
   padding: 0;
   margin: 3rem 1rem 0 0;
-  padding: 0.1625rem 0.5rem;
+  padding: 0.1625rem 0.5rem 0.325rem;
   position: absolute;
   right: 0;
   top: 0;
@@ -234,8 +236,14 @@ form {
   display: block;
 }
 
+.err {
+  color: #d33;
+  font-size: 1.125rem;
+  order: -1;
+}
+
 .errorlist {
-  color: red;
+  color: #d33;
   font-weight: 700;
   list-style: none;
   margin-left: 0;

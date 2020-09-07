@@ -14,7 +14,6 @@ class NewEntryForm(forms.Form):
         widget=forms.TextInput(
             attrs={
                 "class": "titleinput",
-                "autocomplete": "off",
                 "placeholder": "Title goes here",
             }
         ),
@@ -30,20 +29,24 @@ class NewEntryForm(forms.Form):
     )
 
     def clean_title(self):
-        title = self.cleaned_data.get('title').capitalize()
+        title = self.cleaned_data.get("title").capitalize()
         if util.get_entry(title):
             entries = util.list_entries()
             for entry in entries:
                 if title.lower() == entry.lower():
                     title = entry
-            msg = format_html(f"<em>There is already an article named <a href='{title}'>{title}</a></em>.", reverse("encyclopedia:entry", args=(title,)))
-            self.add_error('title', msg)
+            msg = format_html(
+                f"<em>There is already an article named <a href='{title}'>{title}</a></em>.",
+                reverse("encyclopedia:entry", args=(title,)),
+            )
+            self.add_error("title", msg)
         return title
 
 
 class EditEntryForm(forms.Form):
+    prefix = "edit"
     content = forms.CharField(
-        initial="markdown",
+        initial="md",
         label="",
         widget=forms.Textarea(attrs={"class": "textarea"}),
     )
@@ -52,7 +55,7 @@ class EditEntryForm(forms.Form):
 class SearchForm(forms.Form):
     q = forms.CharField(
         label="",
-        widget=forms.TextInput(attrs={"class": "searchbar", "autocomplete": "off"}),
+        widget=forms.TextInput(attrs={"class": "searchbar"}),
     )
 
 
@@ -86,33 +89,30 @@ def create(request):
             content = f"#{title}" + "\n\n" + form.cleaned_data["content"]
             util.save_entry(title, content)
             return HttpResponseRedirect(reverse("encyclopedia:entry", args=(title,)))
-    
-    else: 
+
+    else:
         form = NewEntryForm()
-    
+
     return render(request, "encyclopedia/create.html", {"form": form})
 
 
 def edit(request, title):
-    if request.method == "POST":
-        form = EditEntryForm(request.POST)
+    if not util.get_entry(title):
+        return render(request, "encyclopedia/error.html")
 
-        if form.is_valid():
-            content = form.cleaned_data["content"]
+    elif request.method == "POST":
+        edit_form = EditEntryForm(request.POST)
+        if edit_form.is_valid():
+            content = edit_form.cleaned_data["content"]
             util.save_entry(title, content)
             return HttpResponseRedirect(reverse("encyclopedia:entry", args=(title,)))
 
-    if util.get_entry(title):
-        content = util.get_entry(title)
-        form = EditEntryForm(initial={"content": content})
-        return render(
-            request,
-            "encyclopedia/edit.html",
-            {"title": title, "form": form},
-        )
-
     else:
-        return render(request, "encyclopedia/error.html")
+        edit_form = EditEntryForm(initial={"content": util.get_entry(title)})
+
+    return render(
+        request, "encyclopedia/edit.html", {"title": title, "form": edit_form}
+    )
 
 
 def rand(request):
@@ -122,7 +122,7 @@ def rand(request):
 
 
 def search(request):
-    query = request.GET["q"]
+    query = request.GET.get("q", False)
     entries = util.list_entries()
     results = []
     isValidQuery = False

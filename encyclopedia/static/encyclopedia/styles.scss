@@ -1,5 +1,6 @@
 $serif: Georgia, Times, serif;
 $grey: #a2a9b1;
+$red: #d33;
 $white: #fff;
 
 @mixin button-reset {
@@ -84,6 +85,8 @@ ul {
 }
 
 .search-results {
+  display: flex;
+  flex-direction: column;
   margin: 0;
 
   li {
@@ -156,7 +159,7 @@ ul {
   button {
     @include button-reset;
     margin: 3rem 1rem 0 0;
-    padding: 0.1625rem 0.5rem;
+    padding: 0.1625rem 0.5rem 0.325rem;
     position: absolute;
     right: 0;
     top: 0;
@@ -218,7 +221,7 @@ form {
 
 .cancel {
   @include button-reset;
-  color: #d33;
+  color: $red;
   font-size: 0.875rem;
   font-weight: 700;
   min-height: 2.25rem;
@@ -257,8 +260,14 @@ form {
   }
 }
 
+.err {
+  color: $red;
+  font-size: 1.125rem;
+  order: -1;
+}
+
 .errorlist {
-  color: red;
+  color: $red;
   font-weight: 700;
   list-style: none;
   margin-left: 0;
