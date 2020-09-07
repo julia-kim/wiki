@@ -62,7 +62,7 @@ class SearchForm(forms.Form):
 def index(request):
     return render(
         request,
-        "wiki/index.html",
+        "encyclopedia/index.html",
         {"entries": util.list_entries(), "total": len(util.list_entries())},
     )
 
@@ -75,10 +75,10 @@ def entry(request, title):
             if title.lower() == entry.lower():
                 title = entry
         return render(
-            request, "wiki/entry.html", {"title": title, "content": md}
+            request, "encyclopedia/entry.html", {"title": title, "content": md}
         )
     else:
-        return render(request, "wiki/error.html")
+        return render(request, "encyclopedia/error.html")
 
 
 def create(request):
@@ -93,12 +93,12 @@ def create(request):
     else:
         form = NewEntryForm()
 
-    return render(request, "wiki/create.html", {"form": form})
+    return render(request, "encyclopedia/create.html", {"form": form})
 
 
 def edit(request, title):
     if not util.get_entry(title):
-        return render(request, "wiki/error.html")
+        return render(request, "encyclopedia/error.html")
 
     elif request.method == "POST":
         edit_form = EditEntryForm(request.POST)
@@ -111,7 +111,7 @@ def edit(request, title):
         edit_form = EditEntryForm(initial={"content": util.get_entry(title)})
 
     return render(
-        request, "wiki/edit.html", {"title": title, "form": edit_form}
+        request, "encyclopedia/edit.html", {"title": title, "form": edit_form}
     )
 
 
@@ -137,7 +137,7 @@ def search(request):
                 results.append(entry)
     return render(
         request,
-        "wiki/search.html",
+        "encyclopedia/search.html",
         {
             "form": SearchForm(),
             "query": query,
