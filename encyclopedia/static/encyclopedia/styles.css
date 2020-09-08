@@ -54,9 +54,16 @@ a:visited {
   color: #0b0080;
 }
 
+p {
+  margin-bottom: 0.5rem;
+}
+
 ul {
   margin-left: 1.4rem;
   padding: 0;
+}
+ul p {
+  margin: 0;
 }
 
 /* || SITEWIDE */

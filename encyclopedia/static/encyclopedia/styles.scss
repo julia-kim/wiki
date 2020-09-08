@@ -71,9 +71,17 @@ a {
   }
 }
 
+p {
+  margin-bottom: 0.5rem;
+}
+
 ul {
   margin-left: 1.4rem;
   padding: 0;
+
+  p {
+    margin: 0;
+  }
 }
 
 /* || SITEWIDE */
