@@ -4,7 +4,7 @@
 
 This was written for a CS50W project. Project specifications are [here](https://cs50.harvard.edu/web/2020/projects/1/wiki/).
 
-![Wiki](https://imgur.com/dvujq4q)
+![Wiki](https://i.imgur.com/dvujq4q.png)
 
 ## Installation
 ```cmd
