@@ -1,3 +1,10 @@
+/* || UTILITIES */
+.searchbar .search, .textarea, .searchinput {
+  border: 1px solid #a2a9b1;
+  border-radius: 2px;
+}
+
+/* || GENERAL STYLES */
 body {
   background-color: #f6f6f6;
   color: #000;
@@ -36,24 +43,8 @@ h2 {
   margin-top: 1.313rem;
 }
 
-.logo {
-  font-size: 1.5rem;
-  font-variant: small-caps;
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
-header {
-  background-color: #fbfbfb;
-  background-image: linear-gradient(to bottom, #fff 50%, #f6f6f6 100%);
-  height: 5rem;
-}
-
-.jumbotron {
-  border: 1px solid #ddd;
-  background-color: #f9f9f9;
-  border-radius: 0;
-  padding: 0.35rem;
+h3 {
+  font-size: 1.05rem;
 }
 
 a {
@@ -68,34 +59,18 @@ ul {
   padding: 0;
 }
 
-.search-results {
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-}
-.search-results li {
-  list-style: none;
-  margin: 0.438em 0.438em 0.438em 0;
+/* || SITEWIDE */
+header {
+  background-color: #fbfbfb;
+  background-image: linear-gradient(to bottom, #fff 50%, #f6f6f6 100%);
+  height: 5rem;
 }
 
-.searchbar, .search, .textarea {
-  border: 1px solid #a2a9b1;
-  border-radius: 2px;
-}
-
-.titleinput {
-  border-left: none;
-  border-right: none;
-  border-top: none;
-  width: 100%;
-}
-
-.textarea {
-  font-family: monospace;
-  font-size: 0.813rem;
-  height: 90vh;
-  margin: 0.5rem auto 0.875rem;
-  width: 100%;
+.logo {
+  font-size: 1.5rem;
+  font-variant: small-caps;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
 .main {
@@ -103,10 +78,24 @@ ul {
   border: 1px solid #a7d7f9;
   border-right: hidden;
   font-size: 0.875rem;
-  padding: 1.25em 1.5em 1.5em 1.5em;
+  padding: 1.25rem 1.5rem 1.5rem 1.5rem;
 }
 
-.search {
+.sidebar {
+  background-color: #f6f6f6;
+  font-size: 0.75rem;
+  height: 100vh;
+  padding: 16px 20px;
+  max-width: 11.25rem;
+  min-width: 10.5rem;
+}
+
+.searchbox {
+  font-size: 0.8125rem;
+  position: relative;
+}
+
+.searchinput {
   line-height: 15px;
   margin: 3rem 1rem auto auto;
   max-width: 20em;
@@ -115,26 +104,7 @@ ul {
   width: 20vw;
 }
 
-.searchbar {
-  border-bottom-right-radius: 0;
-  border-top-right-radius: 0;
-  margin-right: hidden;
-  min-height: 2.25rem;
-  padding: 0.313rem 0.5rem;
-  width: 36.375rem;
-}
-.searchbar + .btn,
-.searchbar + .btn:hover,
-.searchbar + .btn:active,
-.searchbar + .btn:focus {
-  border-radius: 0 2px 2px 0;
-}
-
-.searchform {
-  font-size: 0.8125rem;
-  position: relative;
-}
-.searchform button {
+.searchbutton {
   background-color: transparent;
   border: none;
   color: inherit;
@@ -152,75 +122,12 @@ ul {
   color: #545454;
 }
 
-.sidebar {
-  background-color: #f6f6f6;
-  font-size: 0.75rem;
-  height: 100vh;
-  padding: 16px 20px;
-  width: 11.25rem;
-}
-.sidebar h2 {
-  margin-top: 5px;
-}
-
-form {
-  display: block;
-}
-
-.btn,
-.btn:focus,
-.btn:active,
-.btn:hover {
-  background-color: #36c;
-  border: 1px solid #36c;
-  border-radius: 2px;
-  color: #fff;
-  font-size: 0.875rem;
-  font-weight: 700;
-  min-height: 2.25rem;
-  padding: 5px 12px;
-  vertical-align: top;
-}
-.btn:hover {
-  background-color: #447ff5;
-  border-color: #447ff5;
-}
-.btn:active {
-  background-color: #2a4b8d;
-  border-color: #2a4b8d;
-  box-shadow: none;
-  color: #fff;
-}
-.btn:focus {
-  box-shadow: inset 0 0 0 1px #36c, inset 0 0 0 2px #fff;
-  outline: 1px solid transparent;
-}
-
-.cancel {
-  background-color: transparent;
-  border: none;
-  color: inherit;
-  cursor: pointer;
-  font: inherit;
-  padding: 0;
-  color: #d33;
-  font-size: 0.875rem;
-  font-weight: 700;
-  min-height: 2.25rem;
-  padding: 5px 12px;
-}
-.cancel a {
-  color: inherit;
-  text-decoration: none;
-}
-.cancel:hover {
-  color: #ff4242;
-}
-.cancel:active {
-  color: #b32424;
-}
-.cancel:focus {
-  color: #b32424;
+/* || HOMEPAGE */
+.jumbotron {
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+  border-radius: 0;
+  padding: 0.35rem;
 }
 
 .banner {
@@ -232,10 +139,98 @@ form {
 .banner .welcome {
   font-size: 1.406rem;
 }
-.banner span {
-  display: block;
+
+/* || FORMS, BUTTONS AND SEARCH */
+.titleinput {
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  width: 100%;
 }
 
+.textarea {
+  font-family: monospace;
+  font-size: 0.813rem;
+  height: 90vh;
+  margin: 0.5rem auto 0.875rem;
+  width: 100%;
+}
+
+.button {
+  background-color: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  padding: 0;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 700;
+  min-height: 2.25rem;
+  padding: 5px 12px;
+  vertical-align: top;
+}
+
+.button-blue {
+  background-color: #36c;
+  border: 1px solid #36c;
+}
+.button-blue:hover {
+  background-color: #447ff5;
+  border-color: #447ff5;
+}
+.button-blue:active {
+  background-color: #2a4b8d;
+  border-color: #2a4b8d;
+  box-shadow: none;
+  color: #fff;
+}
+.button-blue:focus {
+  box-shadow: inset 0 0 0 1px #36c, inset 0 0 0 2px #fff;
+  outline: 1px solid transparent;
+}
+
+.button-cancel {
+  color: #d33;
+}
+.button-cancel a {
+  color: inherit;
+  text-decoration: none;
+}
+.button-cancel:hover {
+  color: #ff4242;
+}
+.button-cancel:active {
+  color: #b32424;
+}
+.button-cancel:focus {
+  color: #b32424;
+}
+
+.searchbar .search {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+  margin-right: hidden;
+  min-height: 2.25rem;
+  padding: 0.313rem 0.5rem;
+  position: relative;
+  width: 100%;
+}
+.searchbar .button,
+.searchbar .button:hover,
+.searchbar .button:active,
+.searchbar .button:focus {
+  border-radius: 0 2px 2px 0;
+  position: absolute;
+}
+
+.searchresults li {
+  list-style: none;
+  margin: 0.438rem 0.438rem 0.438rem 0;
+}
+
+/* || ERROR MESSAGES */
 .err {
   color: #d33;
   font-size: 1.125rem;

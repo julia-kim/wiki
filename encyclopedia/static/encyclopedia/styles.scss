@@ -3,6 +3,8 @@ $grey: #a2a9b1;
 $red: #d33;
 $white: #fff;
 
+/* || UTILITIES */
+
 @mixin button-reset {
   background-color: transparent;
   border: none;
@@ -11,6 +13,13 @@ $white: #fff;
   font: inherit;
   padding: 0;
 }
+
+%border {
+  border: 1px solid $grey;
+  border-radius: 2px;
+}
+
+/* || GENERAL STYLES */
 
 body {
   background-color: #f6f6f6;
@@ -50,25 +59,8 @@ h2 {
   margin-top: 1.313rem;
 }
 
-.logo {
-  @extend %heading;
-  font-size: 1.5rem;
-  font-variant: small-caps;
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
-header {
-  background-color: #fbfbfb;
-  background-image: linear-gradient(to bottom, $white 50%, #f6f6f6 100%);
-  height: 5rem;
-}
-
-.jumbotron {
-  border: 1px solid #ddd;
-  background-color: #f9f9f9;
-  border-radius: 0;
-  padding: 0.35rem;
+h3 {
+  font-size: 1.05rem;
 }
 
 a {
@@ -84,21 +76,88 @@ ul {
   padding: 0;
 }
 
-.search-results {
-  display: flex;
-  flex-direction: column;
-  margin: 0;
+/* || SITEWIDE */
 
-  li {
-    list-style: none;
-    margin: 0.438em 0.438em 0.438em 0;
+header {
+  background-color: #fbfbfb;
+  background-image: linear-gradient(to bottom, $white 50%, #f6f6f6 100%);
+  height: 5rem;
+}
+
+.logo {
+  @extend %heading;
+  font-size: 1.5rem;
+  font-variant: small-caps;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.main {
+  background-color: $white;
+  border: 1px solid #a7d7f9;
+  border-right: hidden;
+  font-size: 0.875rem;
+  padding: 1.25rem 1.5rem 1.5rem 1.5rem;
+}
+
+.sidebar {
+  background-color: #f6f6f6;
+  font-size: 0.75rem;
+  height: 100vh;
+  padding: 16px 20px;
+  max-width: 11.25rem;
+  min-width: 10.5rem;
+}
+
+.searchbox {
+  font-size: 0.8125rem;
+  position: relative;
+}
+
+.searchinput {
+  @extend %border;
+  line-height: 15px;
+  margin: 3rem 1rem auto auto;
+  max-width: 20em;
+  min-width: 5em;
+  padding: 0.325rem;
+  width: 20vw;
+}
+
+.searchbutton {
+  @include button-reset;
+  margin: 3rem 1rem 0 0;
+  padding: 0.1625rem 0.5rem 0.325rem;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.fa-search {
+  color: #545454;
+}
+
+/* || HOMEPAGE */
+
+.jumbotron {
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+  border-radius: 0;
+  padding: 0.35rem;
+}
+
+.banner {
+  font-size: 0.831rem;
+  margin-bottom: 0;
+  text-align: center;
+  width: 19.25rem;
+
+  .welcome {
+    font-size: 1.406rem;
   }
 }
 
-%border {
-  border: 1px solid $grey;
-  border-radius: 2px;
-}
+/* || FORMS, BUTTONS AND SEARCH */
 
 .titleinput {
   @extend h1;
@@ -117,79 +176,8 @@ ul {
   width: 100%;
 }
 
-.main {
-  background-color: $white;
-  border: 1px solid #a7d7f9;
-  border-right: hidden;
-  font-size: 0.875rem;
-  padding: 1.25em 1.5em 1.5em 1.5em;
-}
-
-.search {
-  @extend %border;
-  line-height: 15px;
-  margin: 3rem 1rem auto auto;
-  max-width: 20em;
-  min-width: 5em;
-  padding: 0.325rem;
-  width: 20vw;
-}
-
-.searchbar {
-  @extend %border;
-  border-bottom-right-radius: 0;
-  border-top-right-radius: 0;
-  margin-right: hidden;
-  min-height: 2.25rem;
-  padding: 0.313rem 0.5rem;
-  width: 36.375rem;
-
-  + .btn,
-  + .btn:hover,
-  + .btn:active,
-  + .btn:focus {
-    border-radius: 0 2px 2px 0;
-  }
-}
-
-.searchform {
-  font-size: 0.8125rem;
-  position: relative;
-
-  button {
-    @include button-reset;
-    margin: 3rem 1rem 0 0;
-    padding: 0.1625rem 0.5rem 0.325rem;
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-}
-
-.fa-search {
-  color: #545454;
-}
-
-.sidebar {
-  background-color: #f6f6f6;
-  font-size: 0.75rem;
-  height: 100vh;
-  padding: 16px 20px;
-  width: 11.25rem;
-
-  h2 {
-    margin-top: 5px;
-  }
-}
-
-form {
-  display: block;
-}
-
-.btn,
-%btn {
-  background-color: #36c;
-  border: 1px solid #36c;
+.button {
+  @include button-reset;
   border-radius: 2px;
   color: $white;
   font-size: 0.875rem;
@@ -197,15 +185,18 @@ form {
   min-height: 2.25rem;
   padding: 5px 12px;
   vertical-align: top;
+}
+
+.button-blue {
+  background-color: #36c;
+  border: 1px solid #36c;
 
   &:hover {
-    @extend %btn;
     background-color: #447ff5;
     border-color: #447ff5;
   }
 
   &:active {
-    @extend %btn;
     background-color: #2a4b8d;
     border-color: #2a4b8d;
     box-shadow: none;
@@ -213,19 +204,13 @@ form {
   }
 
   &:focus {
-    @extend %btn;
     box-shadow: inset 0 0 0 1px #36c, inset 0 0 0 2px $white;
     outline: 1px solid transparent;
   }
 }
 
-.cancel {
-  @include button-reset;
+.button-cancel {
   color: $red;
-  font-size: 0.875rem;
-  font-weight: 700;
-  min-height: 2.25rem;
-  padding: 5px 12px;
 
   a {
     color: inherit;
@@ -245,20 +230,35 @@ form {
   }
 }
 
-.banner {
-  font-size: 0.831rem;
-  margin-bottom: 0;
-  text-align: center;
-  width: 19.25rem;
-
-  .welcome {
-    font-size: 1.406rem;
+.searchbar {
+  .search {
+    @extend %border;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    margin-right: hidden;
+    min-height: 2.25rem;
+    padding: 0.313rem 0.5rem;
+    position: relative;
+    width: 100%;
   }
 
-  span {
-    display: block;
+  .button,
+  .button:hover,
+  .button:active,
+  .button:focus {
+    border-radius: 0 2px 2px 0;
+    position: absolute;
   }
 }
+
+.searchresults {
+  li {
+    list-style: none;
+    margin: 0.438rem 0.438rem 0.438rem 0;
+  }
+}
+
+/* || ERROR MESSAGES */
 
 .err {
   color: $red;

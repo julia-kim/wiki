@@ -29,7 +29,7 @@ class NewEntryForm(forms.Form):
     )
 
     def clean_title(self):
-        title = self.cleaned_data.get("title").capitalize()
+        title = self.cleaned_data.get("title")
         if util.get_entry(title):
             entries = util.list_entries()
             for entry in entries:
@@ -55,7 +55,7 @@ class EditEntryForm(forms.Form):
 class SearchForm(forms.Form):
     q = forms.CharField(
         label="",
-        widget=forms.TextInput(attrs={"class": "searchbar"}),
+        widget=forms.TextInput(attrs={"class": "search"}),
     )
 
 
@@ -130,9 +130,7 @@ def search(request):
         if query and (not query.isspace()):
             isValidQuery = True
             if query.lower() == entry.lower():
-                return HttpResponseRedirect(
-                    reverse("wiki:entry", args=(entry,))
-                )
+                return HttpResponseRedirect(reverse("wiki:entry", args=(entry,)))
             elif query.lower() in entry.lower():
                 results.append(entry)
     return render(

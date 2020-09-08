@@ -5,15 +5,19 @@
 {% block body %}
   {% if not isValidQuery %}
   <h1>Search</h1>
-  <form action="{% url 'wiki:search' %}" method="get" autocomplete="off">
-    {{ form }}<button class="btn" name="search" type="submit">Submit</button>
-  </form>
+  <div class="w-50">
+    <form class="searchbar" action="{% url 'wiki:search' %}" method="get" autocomplete="off">
+      {{ form }}<button class="button button-blue" name="search" type="submit">Submit</button>
+    </form>
+  </div>
   {% else %}
   <h1>Search results</h1>
-  <form action="{% url 'wiki:search' %}" method="get" autocomplete="off">
-    {{ form }}<button class="btn" name="search" type="submit">Submit</button>
-  </form>
-  <ul class="search-results">
+  <div class="w-50">
+    <form class="searchbar" action="{% url 'wiki:search' %}" method="get" autocomplete="off">
+      {{ form }}<button class="button button-blue" name="search" type="submit">Submit</button>
+    </form>
+  </div>
+  <ul class="searchresults d-flex flex-column m-0">
     <li>
       <em
         >The page "{{ query }}" does not exist. How about creating one

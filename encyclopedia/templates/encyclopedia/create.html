@@ -25,8 +25,8 @@
   </ol>
   <form action="{% url 'wiki:create' %}" method="post" autocomplete="off">
     {% csrf_token %} {{ form }}
-    <button class="btn" type="submit">Publish page</button>
-    <button class="cancel" type="button">
+    <button class="button button-blue" type="submit">Publish page</button>
+    <button class="button button-cancel" type="button">
       <a href="{% url 'wiki:index' %}">Cancel</a>
     </button>
   </form>

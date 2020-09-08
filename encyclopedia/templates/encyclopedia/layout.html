@@ -11,9 +11,9 @@
     </head>
     <body>
         <header>
-            <form class="searchform float-right" action="{% url 'wiki:search' %}" method="get" autocomplete="off">
-                <input class="search" type="text" name="q" placeholder="Search Encyclopedia">
-                <button type="submit"><i class="fa fa-search"></i></button>
+            <form class="searchbox float-right" action="{% url 'wiki:search' %}" method="get" autocomplete="off">
+                <input class="searchinput" type="text" name="q" placeholder="Search Encyclopedia">
+                <button type="submit" class="searchbutton"><i class="fa fa-search"></i></button>
             </form>
         </header>
         <div class="container-fluid">
